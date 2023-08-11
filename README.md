@@ -1,2 +1,2 @@
-# NOF
-Novelpia Offline Client for Mobile
+# Novelpia Offline
+Novelpia Client for Offline in Android
