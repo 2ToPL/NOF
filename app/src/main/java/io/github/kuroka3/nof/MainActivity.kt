@@ -43,15 +43,37 @@ class MainActivity : AppCompatActivity() {
         if(!NetworkManager.checkNetworkState(this)) {
             goto_down.visibility = View.GONE
             goto_login.visibility = View.GONE
-        }
+        } else {
+            if(SettingsManager.logkey == null) {
+                if (SettingsManager.login["id"] != null) {
+                    ClientManager.runInAnotherThread {
+                        val result = ClientManager.login(SettingsManager.login)
+                        if (!result.success) {
+                            runOnUiThread {
+                                Toast.makeText(this.applicationContext, result.err, Toast.LENGTH_LONG).show()
+                                goto_down.visibility = View.GONE
+                                goto_settings.visibility = View.GONE
+                            }
+                        } else {
+                            runOnUiThread {
+                                Toast.makeText(this.applicationContext, "LOGIN SUCCESS", Toast.LENGTH_LONG).show()
+                                goto_login.visibility = View.GONE
+                            }
+                        }
+                    }
+                } else {
+                    goto_down.visibility = View.GONE
+                    goto_settings.visibility = View.GONE
+                }
+            } else {
+                ClientManager.login(SettingsManager.logkey!!)
 
-        if(SettingsManager.logkey == null) {
-            if (SettingsManager.login["id"] != null) {
                 ClientManager.runInAnotherThread {
-                    val result = ClientManager.login(SettingsManager.login)
-                    if (!result.success) {
+                    val novel = Novel(2053119, "test", "test")
+
+                    if(novel.read() == "ERR: 소설을 불러올 수 없습니다.") {
                         runOnUiThread {
-                            Toast.makeText(this.applicationContext, result.err, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this.applicationContext, "LOGIN FAILED", Toast.LENGTH_LONG).show()
                             goto_down.visibility = View.GONE
                             goto_settings.visibility = View.GONE
                         }
@@ -60,28 +82,6 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this.applicationContext, "LOGIN SUCCESS", Toast.LENGTH_LONG).show()
                             goto_login.visibility = View.GONE
                         }
-                    }
-                }
-            } else {
-                goto_down.visibility = View.GONE
-                goto_settings.visibility = View.GONE
-            }
-        } else {
-            ClientManager.login(SettingsManager.logkey!!)
-
-            ClientManager.runInAnotherThread {
-                val novel = Novel(2053119, "test", "test")
-
-                if(novel.read() == "ERR: 소설을 불러올 수 없습니다.") {
-                    runOnUiThread {
-                        Toast.makeText(this.applicationContext, "LOGIN FAILED", Toast.LENGTH_LONG).show()
-                        goto_down.visibility = View.GONE
-                        goto_settings.visibility = View.GONE
-                    }
-                } else {
-                    runOnUiThread {
-                        Toast.makeText(this.applicationContext, "LOGIN SUCCESS", Toast.LENGTH_LONG).show()
-                        goto_login.visibility = View.GONE
                     }
                 }
             }
