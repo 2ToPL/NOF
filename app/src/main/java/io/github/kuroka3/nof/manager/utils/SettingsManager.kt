@@ -59,5 +59,7 @@ object SettingsManager {
         maxAPIReq = (setobj["maxAPIReq"] as Long).toInt()
         login = setobj["login"] as JSONObject
         logkey = setobj["logkey"] as String?
+        goup_when_next = setobj["goup_when_next"] as Boolean
+        enable_goup = setobj["enable_goup"] as Boolean
     }
 }

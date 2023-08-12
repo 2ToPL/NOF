@@ -40,8 +40,6 @@ class ReaderActivity : AppCompatActivity() {
         if (true) {
             val info = JSONFile("${filesDir.path}/$book/info.json")
             val obj = info.jsonObject!!
-            obj["last"] = ep
-            info.saveJSONFile(obj)
 
             if ((obj["ep"] as Long).toInt() == ep) {
                 go_next.visibility = View.GONE
@@ -54,6 +52,9 @@ class ReaderActivity : AppCompatActivity() {
             } else if (ep == 0) {
                 go_prev.visibility = View.GONE
             }
+
+            obj["last"] = ep
+            info.saveJSONFile(obj)
         }
 
         val novel = File("${filesDir.path}/$book/$ep.txt")
