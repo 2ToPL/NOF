@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Novelpia Offline</string>
+    <string name="goto_download">소설 다운로드 하기</string>
+    <string name="goto_read">다운로드한 소설 읽기</string>
+    <string name="novelpia_url">https://novelpia.com/</string>
+    <string name="select">선택</string>
+    <string name="check_select">원하는 소설에 들어간 후 선택 버튼 누르기</string>
+    <string name="downloading">다운로드 중...</string>
+    <string name="tohome">홈으로 돌아가기</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="settings">설정</string>
+    <string name="login">로그인</string>
+    <string name="cancel_download">취소</string>
+    <string name="goup">맨 위로</string>
+    <string name="go_next">다음화 보기</string>
+    <string name="go_prev">이전화 보기</string>
+    <string name="enable_goup">맨 위로 버튼 활성화</string>
+    <string name="goup_when">다음화로 이동시 맨 위로 이동</string>
+    <string name="maxAPIReq">최대 API Request 횟수</string>
+    <string name="maxAPIReqHint">횟수</string>
+    <string name="logout">로그아웃</string>
+    <string name="confirm">저장 및 나가기</string>
+</resources>
