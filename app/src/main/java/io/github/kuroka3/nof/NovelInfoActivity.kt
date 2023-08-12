@@ -3,6 +3,7 @@ package io.github.kuroka3.nof
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -45,7 +46,7 @@ class NovelInfoActivity : AppCompatActivity() {
         author.text = "작가 $authorv"
         summary.text = summaryv
         stfrl.text = "${last}화 이어보기"
-        startfrthisedit.hint = last.toString()
+        startfrthisedit.setText(last.toString())
 
         stfrl.setOnClickListener {
             val intent = Intent(this@NovelInfoActivity, ReaderActivity::class.java)
@@ -55,6 +56,11 @@ class NovelInfoActivity : AppCompatActivity() {
         }
 
         startfrthis.setOnClickListener {
+            if(TextUtils.isEmpty(startfrthisedit.text.toString())) {
+                Toast.makeText(this@NovelInfoActivity, "Invalid episode", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val intent = Intent(this@NovelInfoActivity, ReaderActivity::class.java)
             intent.putExtra("book", id)
             intent.putExtra("ep", startfrthisedit.text.toString().toInt())
