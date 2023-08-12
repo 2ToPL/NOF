@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="33dp"
+        tools:context=".NovelInfoActivity">
+
+    <TextView
+            android:id="@+id/title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textSize="30dp"
+    />
+
+    <TextView
+            android:id="@+id/author_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="작가 author"
+            android:textSize="15sp"
+    />
+
+    <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@drawable/wrap_teduri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+            <TextView
+                    android:id="@+id/summary"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:text="summary"
+            />
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/start_from_last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0화 이어보기"
+    />
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/start_from_text"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="number"
+                android:hint="에피소드 번호 입력"/>
+
+        <Button
+                android:layout_weight="1"
+                android:id="@+id/start_from_this"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이어보기"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>
