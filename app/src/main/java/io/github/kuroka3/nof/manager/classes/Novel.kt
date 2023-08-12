@@ -13,7 +13,9 @@ data class Novel(val id: Int, val title: String, val ep: String) : Readable {
         val parser = JSONParser()
 
         // After logging in, get the text from the page
-        val getTextResponse = APIManager.reqNovel(url) ?: return "ERR: 소설을 불러올 수 없습니다."
+        var getTextResponse = APIManager.reqNovel(url) ?: return "ERR: 소설을 불러올 수 없습니다."
+        getTextResponse = getTextResponse.replace("<", "\u003C")
+        getTextResponse = getTextResponse.replace(">", "\u003E")
 
         val builder = StringBuilder()
 
@@ -26,13 +28,15 @@ data class Novel(val id: Int, val title: String, val ep: String) : Readable {
         }
 
         var builderstring = builder.toString()
+        builderstring = removeTextInParentheses(builderstring)
         builderstring = builderstring.replace("커버보기", "")
         builderstring = builderstring.replace("&nbsp;", "")
         builderstring = builderstring.replace("&lt;", "<")
         builderstring = builderstring.replace("&gt;", ">")
         builderstring = builderstring.replace("&amp;", "&")
         builderstring = builderstring.replace("&quot;", "\"")
-        builderstring = removeTextInParentheses(builderstring)
+        builderstring = builderstring.replace("\u003C", "<")
+        builderstring = builderstring.replace("\u003E", ">")
 
         return "$ep : ${title}\n\n\n\n\n$builderstring"
     }
