@@ -1,3 +1,6 @@
+**이제 노벨피아 공식 다운로드 기능 있으니까 그거 쓰십셔**
+
+
 # Novelpia Offline
 [taeseong14](https://github.com/taeseong14)님의 [N-down](https://github.com/taeseong14/N-down)을 기반으로 만든 안드로이드 노벨피아 Downloader/Reader 앱 입니다.  
 
